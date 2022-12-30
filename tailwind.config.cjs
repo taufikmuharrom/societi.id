@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        logo: '#136BAA'
+        logo: '#136BAA',
+        neutral: '#333333ff'
       },
     },
     plugins: [],

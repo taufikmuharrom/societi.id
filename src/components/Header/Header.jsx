@@ -1,42 +1,46 @@
 import { useState, useEffect } from "react";
-import logo from '../../assets/societi.png'
+import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
+  let location = useLocation()
   const [navbar, setNavbar] = useState(false);
   const [navMode, setNavMode] = useState("normal");
-  const [navColor, setnavColor] = useState("transparent");
 
   const listenScrollEvent = () => {
-    window.scrollY > 10 ? setnavColor("#252734") : setnavColor("transparent");
     window.scrollY > 10 ? setNavMode("normal") : setNavMode("big");
-    // window.scrollY > 10 ? setnavSize("5rem") : setnavSize("10rem");
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => {
-      window.removeEventListener("scroll", listenScrollEvent);
-    };
+    if (location.pathname === '/') return setNavMode("big")
+    setNavMode("normal")
+  }, [location])
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      window.addEventListener("scroll", listenScrollEvent);
+      return () => {
+        window.removeEventListener("scroll", listenScrollEvent);
+      };
+    }
   }, []);
 
   return (
     <nav
-      className={`w-full sticky top-0 ${navMode === 'normal' ? "shadow bg-white" : "bg-cyan-400"} `}
+      className={`w-full sticky top-0 ${navMode === 'normal' ? "shadow bg-white" : "bg-cyan-200"} `}
       style={{
         transition: "all 1s",
       }}
     >
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="justify-between mx-auto lg:max-w-7xl px-4 md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href="" className="">
-              {/* <img src={logo} className="h-12 w-12"/> */}
+            <NavLink to='/'>
               <h2
                 style={{
-                  transition: "all .7s",
+                  transition: "all 1s",
                 }}
                 className={` font-bold  ${navMode === 'normal' ? "text-logo text-2xl" : "text-gray-600 text-4xl"} font-['Source_Code_Pro']`}>SocieTI</h2>
-            </a>
+            </NavLink>
             <div className="md:hidden">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -81,17 +85,14 @@ const Header = () => {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-gray-600 hover:text-blue-600">
-                <a href="">Home</a>
+              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+                <NavLink to="/">Home</NavLink>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <a href="">Blog</a>
+              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+                <NavLink to="/about">About</NavLink>
               </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <a href="">About US</a>
-              </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <a href="">Contact US</a>
+              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+                <NavLink to="/blog">Blog</NavLink>
               </li>
             </ul>
           </div>
