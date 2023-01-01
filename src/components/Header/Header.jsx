@@ -7,7 +7,9 @@ const Header = () => {
   const [navMode, setNavMode] = useState("normal");
 
   const listenScrollEvent = () => {
-    window.scrollY > 10 ? setNavMode("normal") : setNavMode("big");
+    if (location.pathname === '/') {
+      window.scrollY > 40 ? setNavMode("normal") : setNavMode("big");
+    }
   };
 
   useEffect(() => {
@@ -16,22 +18,21 @@ const Header = () => {
   }, [location])
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      window.addEventListener("scroll", listenScrollEvent);
-      return () => {
-        window.removeEventListener("scroll", listenScrollEvent);
-      };
-    }
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      window.removeEventListener("scroll", listenScrollEvent);
+    };
+
   }, []);
 
   return (
     <nav
-      className={`w-full sticky top-0 ${navMode === 'normal' ? "shadow bg-white" : "bg-cyan-200"} `}
+      className={`w-full z-10 sticky top-0 ${navMode === 'normal' ? "shadow bg-white" : "bg-cyan-200"} `}
       style={{
         transition: "all 1s",
       }}
     >
-      <div className="justify-between mx-auto lg:max-w-7xl px-4 md:items-center md:flex md:px-8">
+      <div className="justify-between relative mx-auto lg:max-w-7xl px-4 md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <NavLink to='/'>
