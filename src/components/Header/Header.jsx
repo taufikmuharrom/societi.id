@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import logo from '../../assets/societi_vertical.png'
 
 const Header = () => {
   let location = useLocation()
@@ -36,11 +37,10 @@ const Header = () => {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <NavLink to='/'>
-              <h2
-                style={{
-                  transition: "all 1s",
-                }}
-                className={` font-bold  ${navMode === 'normal' ? "text-logo text-2xl" : "text-gray-600 text-4xl"} font-['Source_Code_Pro']`}>SocieTI</h2>
+              <img src={logo} className={`${navMode === 'normal' ? "w-28 md:w-32" : "w-32 md:w-40"}`} style={{
+                transition: "all 1s",
+              }} />
+
             </NavLink>
             <div className="md:hidden">
               <button
@@ -90,10 +90,13 @@ const Header = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
-                <NavLink to="/about">About</NavLink>
+                <NavLink to="/">About</NavLink>
               </li>
               <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
-                <NavLink to="/blog">Blog</NavLink>
+                <NavLink to="/">Contact</NavLink>
+              </li>
+              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+                <NavLink to="/">Blog</NavLink>
               </li>
             </ul>
           </div>

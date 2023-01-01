@@ -19,14 +19,14 @@ const Home = () => {
     <div>
       <div className='bg-gradient-to-t  from-cyan-400 to-cyan-200 h-[35rem] md:h-[46rem]'>
         <div className="mx-auto lg:max-w-7xl px-4 md:px-8">
-          <div className='flex md:pt-20 flex-col-reverse md:flex-row md:justify-center items-center'>
+          <div className='flex pt-5 md:pt-20 flex-col-reverse md:flex-row md:justify-center items-center'>
             <div className='text-center md:text-left'>
               <div className='font-bold text-2xl md:text-5xl mb-5'>
                 <h1 className='mb-3'>Menuju masyarakat</h1>
                 <h1 className='mb-3'>berwasasan digital</h1>
                 <h1>dan berjiwa sosial</h1>
               </div>
-              <button className='bg-logo font-bold md:text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
+              <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
             </div>
             <img src={hero} className="md:w-7/12"></img>
           </div>

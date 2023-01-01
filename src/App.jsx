@@ -2,6 +2,7 @@ import Header from "./components/Header/Header";
 import React, { Suspense } from 'react'
 import { appRoutes } from "./routers";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Footer from "./components/Footer/Footer";
 
 function App() {
 
@@ -32,12 +33,8 @@ function App() {
             })}
           </Routes>
         </Suspense>
-
+        <Footer />
       </BrowserRouter>
-      {/* <div className="h-[100rem] mx-auto lg:max-w-7xl md:items-center md:px-8">
-
-
-      </div> */}
     </div>
   )
 }
