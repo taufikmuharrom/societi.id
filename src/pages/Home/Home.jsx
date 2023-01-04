@@ -22,7 +22,7 @@ const Home = () => {
           <div className='flex pt-5 md:pt-20 flex-col-reverse md:flex-row md:justify-center items-center'>
             <div className='text-center md:text-left'>
               <div className='font-bold text-2xl md:text-5xl mb-5'>
-                <h1 className='mb-3'>Menuju masyarakat</h1>
+                <h1 className='mb-3'>Menuju Masyarakat</h1>
                 <h1 className='mb-3'>berwasasan digital</h1>
                 <h1>dan berjiwa sosial</h1>
               </div>
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto my-8 md:my-0 md:mt-20 lg:max-w-7xl md:px-8">
+      {/* <div className="mx-auto my-8 md:my-0 md:mt-20 lg:max-w-7xl md:px-8">
         <h1 className='text-center text-3xl md:text-4xl pb-10 font-bold md:font-semibold'>Target</h1>
         <div className='md:mt-32 mt-12 grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-10 mx-8 md:mx-0 '>
           {
@@ -62,7 +62,7 @@ const Home = () => {
             })
           }
         </div>
-      </div>
+      </div> */}
       <div className="mx-auto my-10 md:my-20 lg:max-w-7xl md:px-8">
         <h1 className='text-center text-3xl md:text-4xl pb-10 font-bold md:font-semibold'>Program</h1>
         <div className='mx-8 md:mx-0 grid-cols-1 md:grid-cols-3 gap-8 hidden md:grid'>
@@ -99,10 +99,9 @@ const Home = () => {
               <img src={rocketMan} className="w-10/12 mx-auto" />
             </div>
             <div className='md:w-7/12'>
-              <h1 className='font-bold text-2xl md:text-4xl'>Yuk tumbuh bareng</h1>
-              <div className='leading-8 my-5'>
-                Kami percaya dengan semakin banyaknya orang yang meningkat skill digitalnya dan bertambahnya jiwa sosialnya,
-                maka target menjadi indonesia digital akan semakin dekat.
+              <h1 className='font-bold text-2xl md:text-4xl'>Yuk Ngimpact Bareng!</h1>
+              <div className='leading-8 my-5 text-xl'>
+                Join SocieTI untuk belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br/> <span className='font-semibold'>"More People More Impact"</span>
               </div>
               <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
             </div>
