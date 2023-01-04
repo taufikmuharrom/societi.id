@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
-import animation from '../../data/404.json'
+import animation from '../../data/loading-plane.json'
 
-const NotFound = () => {
+const Loading = () => {
 
   return (
     <div className='flex justify-center items-center'>
@@ -12,4 +12,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound
+export default Loading
