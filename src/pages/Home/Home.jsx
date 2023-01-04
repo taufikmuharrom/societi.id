@@ -100,8 +100,8 @@ const Home = () => {
             </div>
             <div className='md:w-7/12'>
               <h1 className='font-bold text-2xl md:text-4xl'>Yuk Ngimpact Bareng!</h1>
-              <div className='leading-8 my-5 text-xl'>
-                Join SocieTI untuk belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br/> <span className='font-semibold'>"More People More Impact"</span>
+              <div className='leading-8 mt-5 mb-6 md:text-lg'>
+                Join SocieTI untuk bersama-sama kita belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br/> <span className='font-semibold'>"More People More Impact"</span>
               </div>
               <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
             </div>
