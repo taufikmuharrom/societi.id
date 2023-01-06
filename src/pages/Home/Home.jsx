@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import hero from '../../assets/illustartions/sprint_planning.png'
 import societi from "../../assets/societi.png"
 import { computer, report, certificate } from '../../assets/icons'
-import { onlineLearning, rocketMan } from '../../assets/illustartions'
+import { onlineLearning, rocketMan, bootcamp, attendingWebinar, femaleOnlineClass, webinar, socialProject, hackaton, collaborationProject } from '../../assets/illustartions'
 import { targetContent, programContent } from '../../data'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
@@ -26,11 +26,16 @@ const Home = () => {
   const [informasi, setInformasi] = useState('')
 
 
-  const selectImage = (logo) => {
-    if (logo === "computer") return computer
-    if (logo === "report") return report
-    return certificate
+  const selectImage = (title) => {
+    if (title === "Bootcamp Class") return femaleOnlineClass
+    if (title === "Short Course") return attendingWebinar
+    if (title === "Webinar") return webinar
+    if (title === "Social Project") return socialProject
+    if (title === "Hackathon") return hackaton
+    return collaborationProject
   }
+
+  
 
   useEffect(() => {
     if (didUpdate.current) return scrollToCoordinate(screenState.coordinateY)
@@ -56,21 +61,22 @@ const Home = () => {
   }
 
   const sendMessages = () => {
+    if(!isMessageValid) return
     setDomisili('')
     setNama('')
     setEmail('')
     setInformasi('')
     setNoTelepon('')
-    toast('Berhasil mengirim pesan!', {
-      position: "top-center",
-      autoClose: 1000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "dark",
-    })
+    // toast('Berhasil mengirim pesan!', {
+    //   position: "top-center",
+    //   autoClose: 1000,
+    //   hideProgressBar: true,
+    //   closeOnClick: true,
+    //   pauseOnHover: false,
+    //   draggable: false,
+    //   progress: undefined,
+    //   theme: "blue",
+    // })
     // axios({
     //   method: 'post',
     //   url: 'https://naditechno.com/societi/api/message/submit',
@@ -145,15 +151,15 @@ const Home = () => {
             programContent.map((content, idx) => {
               return (
                 <div key={"program" + idx} className="md:px-6 px-3  py-6 text-sm md:text-base bg-cyan-100 rounded-lg ">
-                  <img className='w-9/12 md:w-10/12 mx-auto' src={onlineLearning}></img>
+                  <img className='w-9/12 md:w-10/12 mx-auto' src={selectImage(content.title)}></img>
                   <h1 className='font-bold text-xl py-2'>{content.title}</h1>
-                  <h3 className='text-left leading-6 md:leading-7'>{content.description}</h3>
+                  <h3 className='text-justify leading-6 md:leading-7'>{content.description}</h3>
                 </div>
               )
             })
           }
         </div>
-        <Carousel showStatus={false} showThumbs={false} autoPlay={true} swipeable={true} stopOnHover={true} className='md:hidden mx-8'>
+        <Carousel showStatus={false} infiniteLoop={true} showThumbs={false} autoPlay={true} swipeable={true} stopOnHover={true} className='md:hidden mx-8'>
           {
             programContent.map((content, idx) => {
               return (

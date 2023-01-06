@@ -1,38 +1,33 @@
 const programContent = [
     {
       title : "Bootcamp Class",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      description : `program pelatihan yang akan dilangsungkan secara intensif dengan materi yang telah terancang dimulai dari materi dasar dan berhubungan dengan karir dalam bidang IT atau teknologi informasi.
       `,
     },
     {
       title : "Short Course",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      description : `kelas khusus yang bertujuan untuk mengajarkan spesific knowledge dan skill sets dalam waktu yang singkat. biasanya berlangsung dalam 2 hingga 4 pertemuan. Peserta yang mengikuti shortcourse harus sudah memiliki pengetahuan dasar mengenai materi yang akan disampaikan.
       `,
     },
     {
       title : "Webinar",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      description : `webinar adalah seminar atau beragam presentasi yang dilakukan secara online. Peserta webinar dapat mengikuti seminar ini dari manapun mereka berada. Tak hanya mengikuti saja, mereka juga dapat mengajukan pertanyaan atau menjawab soal dari narasumber.
       `,
     },
     {
       title : "Social Project",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      description : `Aksi nyata yang akan dihasilkan oleh member SocieTI untuk masyarakat dan ruang publik yang dapat dapat menjadi solusi bagi permasalahan di lingkungan sekitar, baik berupa produk IT maupun jasa IT.
       `,
     },
     {
       title : "Hackathon",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      description : `Nama Hackathon terdiri dari dua kata, “hack” yang artinya “meretas” dan “marathon” yang artinya “maraton”
+      sebuah kompetisi di bidang IT baik untuk member maupun umum, dengan tujuan mencari pemecahan masalah dengan membuat product dan layanan IT.
       `,
     },
     {
-      title : "Campus Visit",
-      description : `Katanya, kamu akan memahami lebih banyak daripada belajar sendiri. Pasalnya, dalam bootcamp, ada ahli yang mengatur kurikulum untukmu.
-      Kurikulum ini adalah letak beda utama bootcamp dengan belajar coding sendiri. Lewatnya, ada panduan untuk belajar lebih jelas dan lengkap.
+      title : "Collaboration Project",
+      description : `Kerjasan SocieTI dengan pihak lain(Perorangan, organisasi, sekolah, komunitas, perusahaan) dalam rangka memperluas referensi, ide dan kontribusi bagi masyarakat dan ruang publik.
       `,
     }
   ]
