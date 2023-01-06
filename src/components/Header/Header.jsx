@@ -36,6 +36,7 @@ const Header = () => {
     if (section === 'home') coordinate = 0
     if (section === 'about') screenStates.screenWidth < 640 ? coordinate = 390 : coordinate = 750
     if (section === 'program') screenStates.screenWidth < 640 ? coordinate = 1130 : coordinate = 1220
+    if (section === 'contact') screenStates.screenWidth < 640 ? coordinate = 1800 : coordinate = 2590
 
     screenActions.scrollToCoordinate(coordinate)
   }

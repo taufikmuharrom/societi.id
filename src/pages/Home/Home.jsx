@@ -7,18 +7,19 @@ import { targetContent, programContent } from '../../data'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import { useScreen } from '../../stores'
-
+import Lottie from "lottie-react";
+import animation from '../../json/email-animation.json'
+import TextInput from '../../components/Forms/TextInput'
 
 const Home = () => {
   const didUpdate = useRef(false)
   const [screenState, screenActions] = useScreen()
-  const [contactUs, setContactUs] = useState({
-    nama: '',
-    no_telepon: '',
-    email: '',
-    domisili: '',
-    informasi: ''
-  })
+  const [nama, setNama] = useState('')
+  const [no_telepon, setNoTelepon] = useState('')
+  const [email, setEmail] = useState('')
+  const [domisili, setDomisili] = useState('')
+  const [informasi, setInformasi] = useState('')
+
 
   const selectImage = (logo) => {
     if (logo === "computer") return computer
@@ -28,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     if (didUpdate.current) return scrollToCoordinate(screenState.coordinateY)
-    scrollToCoordinate(0)
+    // scrollToCoordinate(0)
     didUpdate.current = true
   }, [screenState.coordinateY])
 
@@ -114,8 +115,61 @@ const Home = () => {
           }
         </Carousel>
       </div>
-      
 
+      <div className="mx-auto py-6 md:mt-32 lg:max-w-7xl px-8">
+        <h1 className='text-center text-3xl md:text-4xl md:pb-10 font-bold md:font-semibold'>Hubungi Kami</h1>
+        <div className='mx-auto md:flex justify-center items-center gap-4 py-10 md:w-9/12 rounded-xl md:bg-cyan-50 md:shadow-xl'>
+          <div className='w-auto md:w-[25rem]'><Lottie animationData={animation} loop={true} />
+          </div>
+          <div className='rounded-lg border bg-white grid grid-cols-1 gap-5 w-full md:w-96 border-gray-200 p-4'>
+            <TextInput
+              label="Nama"
+              border
+              defaultValue={nama}
+              placeholder="Tulis nama kamu"
+              handleChange={(event) => {
+                setNama(event.target.value)
+              }}
+              onEnter={() => { }}
+            />
+            <TextInput
+              label="Email"
+              border
+              defaultValue={email}
+              placeholder="Tulis email kamu"
+              handleChange={(event) => {
+                setEmail(event.target.value)
+              }}
+              onEnter={() => { }}
+            />
+            <TextInput
+              label="No Telepon"
+              border
+              defaultValue={no_telepon}
+              placeholder="Tulis no telepon kamu"
+              handleChange={(event) => {
+                setNoTelepon(event.target.value)
+              }}
+              onEnter={() => { }}
+            />
+            <TextInput
+              label="Domisili"
+              border
+              defaultValue={domisili}
+              placeholder="Domisili kamu"
+              handleChange={(event) => {
+                setDomisili(event.target.value)
+              }}
+              onEnter={() => { }}
+            />
+            <div className='w-full'>
+              <label className="text-xs font-medium pl-3 text-neutral-500 text-left block mb-1">Pesan</label>
+              <textarea value={informasi} onChange={(event) => setInformasi(event.target.value)} className='rounded-lg border border-neutral-100 w-full resize-none py-2 px-3 outline-none text-sm h-32' />
+            </div>
+            <button onClick={() => scollToRef.current.scrollIntoView()} className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Kirim Pesan</button>
+          </div>
+        </div>
+      </div>
       <div className='bg-cyan-100'>
         <div className="mx-auto py-6 md:mt-32 lg:max-w-7xl px-8">
           <div className='flex md:flex-row flex-col pb-9 md:pb-0 justify-center items-center'>

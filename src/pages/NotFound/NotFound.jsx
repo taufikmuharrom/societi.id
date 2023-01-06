@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import animation from '../../data/404.json'
+import animation from '../../json/404.json'
 
 const NotFound = () => {
   return (
