@@ -7,11 +7,7 @@ import Loading from "./components/Loading/Loading";
 
 function App() {
   const [loadData, isLoadData] = useState(true)
-  const loading = (
-    <div className="fixed w-full h-full left-0 top-0 flex justify-center items-center font-semibold text-lg">
-      Loading...
-    </div>
-  )
+  const [innerWidth,setInnerWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     setTimeout(() => isLoadData(false), 3000)

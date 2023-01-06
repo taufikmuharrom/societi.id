@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import hero from '../../assets/illustartions/sprint_planning.png'
 import societi from "../../assets/societi.png"
 import { computer, report, certificate } from '../../assets/icons'
@@ -6,18 +6,42 @@ import { onlineLearning, rocketMan } from '../../assets/illustartions'
 import { targetContent, programContent } from '../../data'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
+import { useScreen } from '../../stores'
 
 
 const Home = () => {
+  const didUpdate = useRef(false)
+  const [screenState, screenActions] = useScreen()
+  const [contactUs, setContactUs] = useState({
+    nama: '',
+    no_telepon: '',
+    email: '',
+    domisili: '',
+    informasi: ''
+  })
 
   const selectImage = (logo) => {
     if (logo === "computer") return computer
     if (logo === "report") return report
     return certificate
   }
+
+  useEffect(() => {
+    if (didUpdate.current) return scrollToCoordinate(screenState.coordinateY)
+    scrollToCoordinate(0)
+    didUpdate.current = true
+  }, [screenState.coordinateY])
+
+  const scrollToCoordinate = (coordinateY) => {
+    window.scrollTo({
+      top: coordinateY,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <div>
-      <div className='bg-gradient-to-t  from-cyan-400 to-cyan-200 h-[35rem] md:h-[46rem]'>
+      <div className='bg-gradient-to-t pt-20 md:pt-0 from-cyan-400 to-cyan-200 h-[39rem] md:h-[46rem]'>
         <div className="mx-auto lg:max-w-7xl px-4 md:px-8">
           <div className='flex pt-5 md:pt-20 flex-col-reverse md:flex-row md:justify-center items-center'>
             <div className='text-center md:text-left'>
@@ -26,22 +50,20 @@ const Home = () => {
                 <h1 className='mb-3'>berwasasan digital</h1>
                 <h1>dan berjiwa sosial</h1>
               </div>
-              <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
+              <button onClick={() => scollToRef.current.scrollIntoView()} className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
             </div>
             <img src={hero} className="md:w-7/12"></img>
           </div>
         </div>
       </div>
-      <div className="mx-auto my-8 px-8  md:my-20 lg:max-w-7xl">
+      <div className="mx-auto my-8 px-8  md:my-20 lg:max-w-7xl" id='about'>
         <h1 className='text-center text-3xl md:text-4xl md:pb-10 pb-7 font-bold md:font-semibold'>Tentang SocieTI</h1>
         <div className='flex flex-col-reverse md:flex-row justify-center items-center'>
           <div className='md:leading-8 leading-6 md:text-base text-sm md:w-2/3 text-justify'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt sapien consequat, pulvinar arcu vel, luctus velit. Nullam et imperdiet eros.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus mi eget condimentum tempor. Aenean non lorem vel libero iaculis accumsan eget
-            non lectus. Etiam at risus augue. Donec quis rhoncus eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In
-            semper a dui quis efficitur. Quisque vel varius odio, vitae posuere felis. Ut a dui at tortor blandit ultrices finibus quis turpis. Nam feugiat eget
-            turpis vel pharetra. Aliquam erat volutpat. Phasellus ac urna aliquet, fringilla elit at, fringilla eros. Nunc dapibus neque vel imperdiet accumsan.
-            Duis commodo elit et nisl lobortis tempor.
+            SocieTI (Social Education IT) adalah komunitas IT yang fokus di kegiatan edukasi dan sosial.
+            SocieTI di dirikan untuk membuka kesempatan bagi ruang publik atau masyarakat yang mempunyai minat belajar hal baru mengenai bidang IT. SocieTI juga memberikan kesempatan bagi IT Profesional untuk menyalurkan kemampuannya bagi masyarakat luas.
+            Melangkah menuju IT professional yang berkarakter, berjiwa sosial tinggi dan bermanfaat untuk ruang publik adalah tujuan yang harus di capai oleh SocieTI.
+            Untuk mencapai tujuan tersebut, SocieTI memiliki banyak program yang menarik dan berdampak langsung untuk member juga masyarakat luas.
           </div>
           <div>
             <img src={societi} className="w-8/12 mx-auto mb-5 md:mb-0 " />
@@ -63,7 +85,7 @@ const Home = () => {
           }
         </div>
       </div> */}
-      <div className="mx-auto my-10 md:my-20 lg:max-w-7xl md:px-8">
+      <div className="mx-auto my-10 md:my-20 lg:max-w-7xl md:px-8" >
         <h1 className='text-center text-3xl md:text-4xl pb-10 font-bold md:font-semibold'>Program</h1>
         <div className='mx-8 md:mx-0 grid-cols-1 md:grid-cols-3 gap-8 hidden md:grid'>
           {
@@ -92,6 +114,8 @@ const Home = () => {
           }
         </Carousel>
       </div>
+      
+
       <div className='bg-cyan-100'>
         <div className="mx-auto py-6 md:mt-32 lg:max-w-7xl px-8">
           <div className='flex md:flex-row flex-col pb-9 md:pb-0 justify-center items-center'>
@@ -101,7 +125,7 @@ const Home = () => {
             <div className='md:w-7/12'>
               <h1 className='font-bold text-2xl md:text-4xl'>Yuk Ngimpact Bareng!</h1>
               <div className='leading-8 mt-5 mb-6 md:text-lg'>
-                Join SocieTI untuk bersama-sama kita belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br/> <span className='font-semibold'>"More People More Impact"</span>
+                Join SocieTI untuk bersama-sama kita belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br /> <span className='font-semibold'>"More People More Impact"</span>
               </div>
               <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
             </div>

@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from '../../assets/societi_vertical.png'
+import { useScreen } from "../../stores";
+
 
 const Header = () => {
   let location = useLocation()
   const [navbar, setNavbar] = useState(false);
   const [navMode, setNavMode] = useState("normal");
+  const [screenStates, screenActions] = useScreen()
 
   const listenScrollEvent = () => {
+    if(screenStates.screenWidth < 640) return
     if (location.pathname === '/') {
       window.scrollY > 40 ? setNavMode("normal") : setNavMode("big");
     }
@@ -23,8 +27,18 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
-
   }, []);
+  
+
+  const handleClickNavbar = (section) => {
+    let coordinate = 0
+
+    if (section === 'home') coordinate = 0
+    if (section === 'about') screenStates.screenWidth < 640 ? coordinate = 390 : coordinate = 750
+    if (section === 'program') screenStates.screenWidth < 640 ? coordinate = 1130 : coordinate = 1220
+
+    screenActions.scrollToCoordinate(coordinate)
+  }
 
   return (
     <nav
@@ -33,14 +47,13 @@ const Header = () => {
         transition: "all 1s",
       }}
     >
-      <div className="justify-between relative mx-auto lg:max-w-7xl px-4 md:items-center md:flex md:px-8">
+      <div className="justify-between absolute md:relative w-full md:w-auto mx-auto lg:max-w-7xl px-0 md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <NavLink to='/'>
+          <div className={`flex items-center ${navMode === 'normal' ? "bg-white shadow-xl" : "bg-cyan-200"} md:shadow-none md:bg-transparent justify-between py-3 md:py-5 md:block`}>
+            <NavLink to='/' className='pl-2 md:pl-0'>
               <img src={logo} className={`${navMode === 'normal' ? "w-28 md:w-32" : "w-32 md:w-40"}`} style={{
                 transition: "all 1s",
               }} />
-
             </NavLink>
             <div className="md:hidden">
               <button
@@ -80,24 +93,27 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className={`${navMode === 'normal' ? "bg-white" : "bg-cyan-200"} md:bg-transparent pl-5 md:pl-0 rounded-b-xl shadow-xl md:shadow-none   w-full md:w-auto`}>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+            className={`flex-1 justify-self-center py-3 md:py-0 md:block ${navbar ? "block" : "hidden"
               }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+            <ul className="items-center justify-center space-y-5 md:flex md:space-x-5 md:space-y-0">
+              <li className="text-gray-600 hover:font-bold  transition ease-in-out delay-150 duration-300" onClick={() => { handleClickNavbar("home") }}>
                 <NavLink to="/">Home</NavLink>
               </li>
-              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+              <li className="text-gray-600 hover:font-bold  transition ease-in-out delay-150 duration-300" onClick={() => { handleClickNavbar("about") }}>
                 <NavLink to="/">About</NavLink>
               </li>
-              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+              <li className="text-gray-600 hover:font-bold  transition ease-in-out delay-150 duration-300" onClick={() => { handleClickNavbar("program") }}>
+                <NavLink to="/">Program</NavLink>
+              </li>
+              <li className="text-gray-600 hover:font-bold  transition ease-in-out delay-150 duration-300" onClick={() => { handleClickNavbar("contact") }}>
                 <NavLink to="/">Contact</NavLink>
               </li>
-              <li className="text-gray-600 hover:font-bold hover:scale-110 transition ease-in-out delay-150 duration-300">
+              {/* <li className="text-gray-600 hover:font-bold  transition ease-in-out delay-150 duration-300">
                 <NavLink to="/">Blog</NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
