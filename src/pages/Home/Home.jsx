@@ -112,10 +112,11 @@ const Home = () => {
         <h1 className='text-center text-3xl md:text-4xl md:pb-10 pb-7 font-bold md:font-semibold'>Tentang SocieTI</h1>
         <div className='flex flex-col-reverse md:flex-row justify-center items-center'>
           <div className='md:leading-8 leading-6 md:text-base text-sm md:w-2/3 text-justify'>
-            SocieTI (Social Education IT) adalah komunitas IT yang fokus di kegiatan edukasi dan sosial.
-            SocieTI di dirikan untuk membuka kesempatan bagi ruang publik atau masyarakat yang mempunyai minat belajar hal baru mengenai bidang IT. SocieTI juga memberikan kesempatan bagi IT Profesional untuk menyalurkan kemampuannya bagi masyarakat luas.
-            Melangkah menuju IT professional yang berkarakter, berjiwa sosial tinggi dan bermanfaat untuk ruang publik adalah tujuan yang harus di capai oleh SocieTI.
-            Untuk mencapai tujuan tersebut, SocieTI memiliki banyak program yang menarik dan berdampak langsung untuk member juga masyarakat luas.
+            SocieTI (Social Education IT) adalah komunitas IT yang fokus pada kegiatan edukasi dan sosial.
+            SocieTI didirikan untuk membuka kesempatan bagi ruang publik atau masyarakat yang memiliki minat belajar hal baru ataupun memperkuat skill di bidang IT.
+            Bekerja sama dengan para IT Profesional Indonesia, berbagi ilmu dan pengetahuan berdasarkan pengalaman. <br/>
+            Melangkah menuju IT professional yang berkarakter, berjiwa sosial tinggi dan bermanfaat untuk ruang publik adalah tujuan yang akan dicapai oleh SocieTI.
+            SocieTI menghadirkan program-program menarik dan berdampak langsung untuk member dan juga masyarakat luas.
           </div>
           <div>
             <img src={societi} className="w-8/12 mx-auto mb-5 md:mb-0 " />
