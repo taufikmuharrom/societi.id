@@ -4,10 +4,12 @@ import { appRoutes } from "./routers";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from "./components/Footer/Footer";
 import Loading from "./components/Loading/Loading";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [loadData, isLoadData] = useState(true)
-  const [innerWidth,setInnerWidth] = useState(window.innerWidth)
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     setTimeout(() => isLoadData(false), 3000)
@@ -17,6 +19,7 @@ function App() {
   return (
     <div className="min-h-screen">
       {/* <Loading /> */}
+      <ToastContainer />
       <BrowserRouter>
         <Header />
         <Suspense fallback={<Loading />}>

@@ -11,6 +11,7 @@ import Lottie from "lottie-react";
 import animation from '../../json/email-animation.json'
 import TextInput from '../../components/Forms/TextInput'
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 
 const Home = () => {
@@ -55,21 +56,39 @@ const Home = () => {
   }
 
   const sendMessages = () => {
-    axios({
-      method: 'post',
-      url: 'https://naditechno.com/societi/api/message/submit',
-      data: {
-        nama,
-        email,
-        no_telepon,
-        domisili,
-        informasi
-      }
-    }).then((response) => {
-      console.log('SUCCESS', response)
-    }).catch(() => {
-
+    setDomisili('')
+    setNama('')
+    setEmail('')
+    setInformasi('')
+    setNoTelepon('')
+    toast('Berhasil mengirim pesan!', {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
     })
+    // axios({
+    //   method: 'post',
+    //   url: 'https://naditechno.com/societi/api/message/submit',
+    //   data: {
+    //     nama,
+    //     email,
+    //     no_telepon,
+    //     domisili,
+    //     informasi
+    //   },
+    //   headers:{
+    //     Cookie:'ci_session=544ed9977064c685288a537d41f561be1d309c68'
+    //   }
+    // }).then((response) => {
+    //   console.log('SUCCESS', response)
+    // }).catch(() => {
+
+    // })
   }
 
   return (
