@@ -10,10 +10,14 @@ import { useScreen } from '../../stores'
 import Lottie from "lottie-react";
 import animation from '../../json/email-animation.json'
 import TextInput from '../../components/Forms/TextInput'
+import axios from 'axios'
+
 
 const Home = () => {
   const didUpdate = useRef(false)
+  const didUpdateMessage = useRef(false)
   const [screenState, screenActions] = useScreen()
+  const [isMessageValid, setIsMessageValid] = useState(false)
   const [nama, setNama] = useState('')
   const [no_telepon, setNoTelepon] = useState('')
   const [email, setEmail] = useState('')
@@ -33,10 +37,38 @@ const Home = () => {
     didUpdate.current = true
   }, [screenState.coordinateY])
 
+  useEffect(() => {
+    if (didUpdate.current) return isRequestMessageValid()
+    didUpdateMessage.current = false
+  }, [nama, no_telepon, email, domisili, informasi])
+
   const scrollToCoordinate = (coordinateY) => {
     window.scrollTo({
       top: coordinateY,
       behavior: 'smooth',
+    })
+  }
+
+  const isRequestMessageValid = () => {
+    if (nama !== '' && email !== '' && no_telepon !== '' && domisili !== '' && informasi !== '') return setIsMessageValid(true)
+    return setIsMessageValid(false)
+  }
+
+  const sendMessages = () => {
+    axios({
+      method: 'post',
+      url: 'https://naditechno.com/societi/api/message/submit',
+      data: {
+        nama,
+        email,
+        no_telepon,
+        domisili,
+        informasi
+      }
+    }).then((response) => {
+      console.log('SUCCESS', response)
+    }).catch(() => {
+
     })
   }
 
@@ -133,6 +165,7 @@ const Home = () => {
               onEnter={() => { }}
             />
             <TextInput
+              type="email"
               label="Email"
               border
               defaultValue={email}
@@ -143,6 +176,7 @@ const Home = () => {
               onEnter={() => { }}
             />
             <TextInput
+              type="number"
               label="No Telepon"
               border
               defaultValue={no_telepon}
@@ -166,7 +200,7 @@ const Home = () => {
               <label className="text-xs font-medium pl-3 text-neutral-500 text-left block mb-1">Pesan</label>
               <textarea value={informasi} onChange={(event) => setInformasi(event.target.value)} className='rounded-lg border border-neutral-100 w-full resize-none py-2 px-3 outline-none text-sm h-32' />
             </div>
-            <button onClick={() => scollToRef.current.scrollIntoView()} className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Kirim Pesan</button>
+            <button onClick={() => sendMessages()} className={`py-3 px-8 rounded-lg border-b-4 font-bold text-sm ${isMessageValid ? 'bg-logo  hover:bg-blue-100   text-white  border-blue-100 hover:border-blue-300 transition duration-300' : 'bg-gray-300 text-white cursor-not-allowed'} `}>Kirim Pesan</button>
           </div>
         </div>
       </div>
@@ -181,7 +215,7 @@ const Home = () => {
               <div className='leading-8 mt-5 mb-6 md:text-lg'>
                 Join SocieTI untuk bersama-sama kita belajar dan berkarya menuju Masyarakat berwasasan digital dan berjiwa sosial. <br /> <span className='font-semibold'>"More People More Impact"</span>
               </div>
-              <button className='bg-logo font-bold text-sm hover:bg-blue-100  py-3 px-8 rounded-lg text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300"'>Gabung SocieTI</button>
+              <button className={`py-3 px-8 rounded-lg bg-logo font-bold text-sm hover:bg-blue-100   text-white border-b-4 border-blue-100 hover:border-blue-300 transition duration-300`}>Gabung SocieTI</button>
             </div>
           </div>
         </div>
