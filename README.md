@@ -1,5 +1,5 @@
 # societi.id
 
-SocieTI adalah komunitas IT yang berfokus di bidang sosial dan edukasi
+SocieTI adalah komunitas belajar IT
 
 live demo (beta) : https://societi-id.vercel.app/
